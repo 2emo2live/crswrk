@@ -27,7 +27,7 @@ const initializeAssistant = (getState) => {
         });
     }
 	console.log('Тест 1');
-    return createAssistant({ getState });
+    return createAssistant({ initPhrase: `Запусти ${process.env.REACT_APP_SMARTAPP}`, getState });
 };
 
 
