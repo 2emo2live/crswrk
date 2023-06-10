@@ -26,6 +26,7 @@ const initializeAssistant = (getState) => {
             getState,
         });
     }
+	console.log('tesst');
     return createAssistant({ getState });
 };
 
