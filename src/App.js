@@ -26,8 +26,7 @@ const initializeAssistant = (getState) => {
             getState,
         });
     }
-	console.log('Тест 1');
-    return createAssistant({ initPhrase: `Запусти ${process.env.REACT_APP_SMARTAPP}`, getState });
+    return createAssistant({ getState });
 };
 
 
@@ -47,11 +46,13 @@ export class App extends React.Component {
         };
 
         this.assistant = initializeAssistant(() => this.getStateForAssistant() );
+		
         this.assistant.on("data", (event/*: any*/) => {
             console.log(`assistant.on(data)`, event);
             const { action } = event
             this.dispatchAssistantAction(action);
         });
+		
         this.assistant.on("start", (event) => {
             console.log(`assistant.on(start)`, event);
         });
@@ -159,23 +160,23 @@ export class App extends React.Component {
 
 
 
-  return (
-      <>
+		return (
+			<>
 
-          {this.state.short_name =="" ? <StartPage  error = {this.state.error}/> :
+			{this.state.short_name =="" ? <StartPage  error = {this.state.error}/> :
               <RoutePage send = {this._send_action_value} rotate = {this.rotate} data = {this.state}/>}
 
 
-        {/*routes = {this.state.routes}*/}
-        {/*getRoute = {(route) => { this.get_route({ type: "get_route", route }); }}*/}
-        {/*/>*/}
+			{/*routes = {this.state.routes}*/}
+			{/*getRoute = {(route) => { this.get_route({ type: "get_route", route }); }}*/}
+			{/*/>*/}
 
-        {/*<StopPage name = {"Тет
-        атральная площадь"} routes={[1,2,3,4,5,6]}/>*/}
+			{/*<StopPage name = {"Тет
+			атральная площадь"} routes={[1,2,3,4,5,6]}/>*/}
 
-      </>
+			</>
 
-    )
+		)
     }
 
 }
