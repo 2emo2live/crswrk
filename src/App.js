@@ -27,7 +27,12 @@ const initializeAssistant = (getState) => {
         });
     }
 	console.log('tesst');
-    return createAssistant({ getState });
+    //return createAssistant({ getState });
+	return createSmartappDebugger({
+            token: process.env.REACT_APP_TOKEN ?? "",
+            initPhrase: `Запусти ${process.env.REACT_APP_SMARTAPP}`,
+            getState,
+    });
 };
 
 
